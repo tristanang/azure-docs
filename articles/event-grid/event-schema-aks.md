@@ -18,6 +18,11 @@ AKS emits the following event types
 |    Event Type                                             |    Description                                                       |
 |-----------------------------------------------------------|----------------------------------------------------------------------|
 | Microsoft.ContainerService.NewKubernetesVersionAvailable  | Triggered when the list of available Kubernetes versions is updated. |
+| Microsoft.ContainerService.ClusterSupportEnded            ||
+| Microsoft.ContainerService.ClusterSupportEnding           ||
+| Microsoft.ContainerService.NodePoolRollingStarted         ||
+| Microsoft.ContainerService.NodePoolRollingSucceeded       ||
+| Microsoft.ContainerService.NodePoolRollingFailed          ||
 
 ## Properties common to all events
 
@@ -106,6 +111,181 @@ The data object contains the following properties:
 | `latestStableKubernetesVersion`    | string | The latest stable supported version of Kubernetes available. |
 | `lowestMinorKubernetesVersion`     | string | The lowest supported version of Kubernetes available.        |
 | `latestPreviewKubernetesVersion`   | string | The latest preview version of Kubernetes available.          |
+
+### ClusterSupportEnded
+
+# [Event Grid event schema](#tab/event-grid-event-schema)
+
+```json
+{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.ContainerService/managedClusters/{cluster}",
+  "subject": "{cluster}",
+  "eventType": "Microsoft.ContainerService.ClusterSupportEnded",
+  "id": "1234567890abcdef1234567890abcdef12345678",
+  "data": {
+    "kubernetesVersion": "1.23.15"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "eventTime": "2023-03-29T18:00:00.0000000Z"
+}
+```
+# [Cloud event schema](#tab/cloud-event-schema)
+
+```json
+{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.ContainerService/managedClusters/{cluster}",
+  "subject": "{cluster}",
+  "type": "Microsoft.ContainerService.ClusterSupportEnded",
+  "time": "2023-03-29T18:00:00.0000000Z",
+  "id": "1234567890abcdef1234567890abcdef12345678",
+  "data": {
+    "kubernetesVersion": "1.23.15"
+  },
+  "specversion": "1.0"
+}
+```
+
+### ClusterSupportEnding
+
+# [Event Grid event schema](#tab/event-grid-event-schema)
+
+```json
+{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.ContainerService/managedClusters/{cluster}",
+  "subject": "{cluster}",
+  "eventType": "Microsoft.ContainerService.ClusterSupportEnding",
+  "id": "1234567890abcdef1234567890abcdef12345678",
+  "data": {
+    "kubernetesVersion": "1.24.10"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "eventTime": "2023-03-29T18:00:00.0000000Z"
+}
+```
+
+# [Cloud event schema](#tab/cloud-event-schema)
+
+```json
+{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.ContainerService/managedClusters/{cluster}",
+  "subject": "{cluster}",
+  "type": "Microsoft.ContainerService.ClusterSupportEnding",
+  "time": "2023-03-29T18:00:00.0000000Z",
+  "id": "1234567890abcdef1234567890abcdef12345678",
+  "data": {
+    "kubernetesVersion": "1.24.10"
+  },
+  "specversion": "1.0"
+}
+```
+
+### NodePoolRollingStarted
+
+# [Event Grid event schema](#tab/event-grid-event-schema)
+
+```json
+{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.ContainerService/managedClusters/{cluster}",
+  "subject": "{cluster}",
+  "eventType": "Microsoft.ContainerService.NodePoolRollingStarted",
+  "id": "1234567890abcdef1234567890abcdef12345678",
+  "data": {
+    "nodePoolName": "nodepool1"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "eventTime": "2023-03-29T18:00:00.0000000Z"
+}
+```
+
+# [Cloud event schema](#tab/cloud-event-schema)
+
+```json
+{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.ContainerService/managedClusters/{cluster}",
+  "subject": "{cluster}",
+  "type": "Microsoft.ContainerService.NodePoolRollingStarted",
+  "time": "2023-03-29T18:00:00.0000000Z",
+  "id": "1234567890abcdef1234567890abcdef12345678",
+  "data": {
+    "nodePoolName": "nodepool1"
+  },
+  "specversion": "1.0"
+}
+```
+
+### NodePoolRollingSucceeded
+
+# [Event Grid event schema](#tab/event-grid-event-schema)
+
+```json
+{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.ContainerService/managedClusters/{cluster}",
+  "subject": "{cluster}",
+  "eventType": "Microsoft.ContainerService.NodePoolRollingSucceeded",
+  "id": "1234567890abcdef1234567890abcdef12345678",
+  "data": {
+    "nodePoolName": "nodepool1"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "eventTime": "2023-03-29T18:00:00.0000000Z"
+}
+```
+
+# [Cloud event schema](#tab/cloud-event-schema)
+
+```json
+{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.ContainerService/managedClusters/{cluster}",
+  "subject": "{cluster}",
+  "type": "Microsoft.ContainerService.NodePoolRollingSucceeded",
+  "time": "2023-03-29T18:00:00.0000000Z",
+  "id": "1234567890abcdef1234567890abcdef12345678",
+  "data": {
+    "nodePoolName": "nodepool1"
+  },
+  "specversion": "1.0"
+}
+```
+
+### NodePoolRollingFailed
+
+# [Event Grid event schema](#tab/event-grid-event-schema)
+
+```json
+{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.ContainerService/managedClusters/{cluster}",
+  "subject": "{cluster}",
+  "eventType": "Microsoft.ContainerService.NodePoolRollingFailed",
+  "id": "1234567890abcdef1234567890abcdef12345678",
+  "data": {
+    "nodePoolName": "nodepool1"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "eventTime": "2023-03-29T18:00:00.0000000Z"
+}
+```
+
+# [Cloud event schema](#tab/cloud-event-schema)
+
+```json
+{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.ContainerService/managedClusters/{cluster}",
+  "subject": "{cluster}",
+  "eventType": "Microsoft.ContainerService.NodePoolRollingFailed",
+  "id": "1234567890abcdef1234567890abcdef12345678",
+  "data": {
+    "nodePoolName": "nodepool1"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "eventTime": "2023-03-29T18:00:00.0000000Z"
+}
+```
 
 ## Next steps
 See the following tutorial: [Quickstart: Subscribe to Azure Kubernetes Service (AKS) events with Azure Event Grid](../aks/quickstart-event-grid.md).
